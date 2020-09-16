@@ -56,7 +56,8 @@
 				money1km: 0,
 				historyList: [],
 				loading: false,
-				videoAd: null
+				videoAd: null,
+				oldData: null,
 			};
 		},
         computed: mapState(['userInfo', 'config']),
@@ -93,18 +94,24 @@
 				let km = Number(this.km)
 				let money1km = (totalPrice / km).toFixed(2)
 				let oil100 = (this.totalPrice / this.unitPrice / km * 100).toFixed(2)
+				let isSame = this.money1km === money1km && this.oil100 === oil100
 				this.money1km = money1km
 				this.oil100 = oil100
 				if(addToHistory) {
-					let isSame = this.money1km === money1km && this.oil100 === oil100
+					isSame = `${this.money1km}${this.oil100}` === this.oldData
 					if (isSame) {
 						uni.showToast(
 								{
-									title: '相同数据；无需重复记录。'
+									title: '相同数据；无需重复记录。',
+									icon: 'none'
 								}
 						)
 						return
 					}
+					if (this.loading) {
+						return
+					}
+					this.loading = true
 					wx.cloud.callFunction({
 						name: 'addDataToCould',
 						data: {
@@ -120,9 +127,12 @@
 							]
 						}
 					}).then(res => {
+						this.loading = false
+						this.oldData = `${this.money1km}${this.oil100}`
 						uni.showToast(
 								{
-									title: '记录成功，可到历史油耗中查看。'
+									title: '记录成功，可到历史油耗中查看',
+									icon: 'none'
 								}
 						)
 					})

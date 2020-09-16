@@ -62,57 +62,6 @@
 			showTime (time) {
 				return util.dateFormat(new Date(time).getTime())
 			},
-			compute () {
-				let msgArr = []
-				if(isNaN(Number(this.unitPrice)) || !this.unitPrice) {
-					this.unitPrice = ''
-					msgArr.push('油价')
-				}
-				if(isNaN(Number(this.totalPrice)) || !this.totalPrice) {
-					this.totalPrice = ''
-					msgArr.push('总价格')
-				}
-				if(isNaN(Number(this.km)) || !this.km) {
-					this.km = ''
-					msgArr.push('里程数')
-				}
-				if(msgArr.length) {
-					uni.showToast(
-							{
-								title: `请输入${msgArr.join('，')}`,
-								icon: 'none',
-							}
-					);
-					return
-				}
-				let unitPrice = Number(this.unitPrice)
-				let totalPrice = Number(this.totalPrice)
-				let km = Number(this.km)
-				let money1km = (totalPrice / km).toFixed(2)
-				let oil100 = (this.totalPrice / this.unitPrice / km * 100).toFixed(2)
-				let isSame = this.money1km === money1km && this.oil100 === oil100
-				this.money1km = money1km
-				this.oil100 = oil100
-				if(!isSame) {
-					wx.cloud.callFunction({
-						name: 'addDataToCould',
-						data: {
-							dbName: 'userOilCompute',
-							list: [
-								{
-									unitPrice,
-									totalPrice,
-									km,
-									oil100: this.oil100,
-									money1km: this.money1km
-								}
-							]
-						}
-					}).then(res => {
-						this.getOilHistory()
-					})
-				}
-			},
 			// 获取历史油耗
 			async getOilHistory () {
 				this.loading = true
