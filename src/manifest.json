@@ -1,0 +1,43 @@
+{
+	"name": "油耗计算小助手",
+	"appid": "",
+	"description": "油耗计算小助手",
+	"transformPx": false,
+	"icons": [{
+		"sizes": "分辨率，192x192",
+		"src": "图片路径"
+	}],
+	"versionName": "1.0.2",
+	"versionCode": 102,
+	"app-plus": {
+		"usingComponents": true,
+		"compilerVersion": 3
+	},
+	// 5+App特有相关
+	"quickapp": {},
+	// 快应用特有相关
+	"mp-weixin": {
+		"appid" : "wxeab1f7a4d6bc5a66",
+		"cloudfunctionRoot": "./functions/",
+		"setting": {
+			"urlCheck": false
+		},
+		"usingComponents": true
+	},
+	"mp-alipay": {
+		"usingComponents": true
+	},
+	"mp-baidu": {
+		"usingComponents": true
+	},
+	"mp-toutiao": {
+		"usingComponents": true
+	},
+	"h5": {
+		"template": "template.h5.html",
+		"router": {
+			"mode": "hash",
+			"base": "/demo/picture/website/"
+		}
+	}
+}
