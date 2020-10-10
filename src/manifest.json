@@ -1,7 +1,7 @@
 {
-	"name": "油耗计算小助手",
+	"name": "油耗计算",
 	"appid": "",
-	"description": "油耗计算小助手",
+	"description": "油耗计算",
 	"transformPx": false,
 	"icons": [{
 		"sizes": "分辨率，192x192",
@@ -18,6 +18,14 @@
 	// 快应用特有相关
 	"mp-weixin": {
 		"appid" : "wxeab1f7a4d6bc5a66",
+		"cloudfunctionRoot": "./functions/",
+		"setting": {
+			"urlCheck": false
+		},
+		"usingComponents": true
+	},
+	"mp-qq": {
+		"appid" : "1111012295",
 		"cloudfunctionRoot": "./functions/",
 		"setting": {
 			"urlCheck": false

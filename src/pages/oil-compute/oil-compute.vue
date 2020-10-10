@@ -11,7 +11,9 @@
 		</view>
 		<view class="button-view-box">
 			<button class="left" type="primary" @click="compute()">计算</button>
+			<!--  #ifdef  MP-WEIXIN -->
 			<button class="right" @click="addToHistory">记录</button>
+			<!--  #endif -->
 		</view>
 		<view class="result-box">
 			<view class="card-item">
@@ -23,11 +25,11 @@
 				<text class="value">{{money1km}}元</text>
 			</view>
 		</view>
-
+		<!--  #ifdef  MP-WEIXIN -->
 		<view class="tip">
 			提示：点击记录，可将本次的油耗数据记录下来，到历史油耗中查看爱车的油耗数据。
 		</view>
-
+		<!--  #endif -->
 		<view @click="appreciate" class="fix-bottom">
 			<ad-custom class="ad-custom" unit-id="adunit-aae810d0225a4961" ad-theme="black"></ad-custom>
 			<view class="btn" v-if="config && config.showLookAd">赞赏作者</view>
@@ -232,8 +234,8 @@
 		padding 10px
 		.left
 			flex 3
-			margin-right 20px
 		.right
+			margin-left 20px
 			flex 1
 	.tip
 		display block

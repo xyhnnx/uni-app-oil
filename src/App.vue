@@ -1,13 +1,15 @@
 <script>
 	export default {
 		onLaunch: function() {
-			console.log('App Launch')
-          wx.cloud.init({
-            env: 'test-xyh-video',
-            traceUser: true
-          }) //调用前需先调用init
-          console.log('wx.cloud.init()')
-          this.$store.commit('getConfig')
+            // #ifdef MP-WEIXIN
+            console.log('App Launch')
+            wx.cloud.init({
+                env: 'test-xyh-video',
+                traceUser: true
+            }) //调用前需先调用init
+            console.log('wx.cloud.init()')
+            this.$store.commit('getConfig')
+            // #endif
 		},
 		onShow: function() {
 			console.log('App Show')
