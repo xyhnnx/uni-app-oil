@@ -131,12 +131,16 @@
 					}).then(res => {
 						this.loading = false
 						this.oldData = `${this.money1km}${this.oil100}`
-						uni.showToast(
-								{
-									title: '记录成功，可到历史油耗中查看',
-									icon: 'none'
+						uni.showModal({
+							title: '提示',
+							content: `记录成功，可到历史油耗中查看`,
+							showCancel: false,
+							success: async (res3) => {
+								if (res3.confirm) {
+								} else if (res3.cancel) {
 								}
-						)
+							}
+						});
 					})
 				}
 			},
