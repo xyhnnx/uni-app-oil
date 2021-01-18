@@ -205,19 +205,27 @@
 	@import "../../uni.styl"
 	.input-view-item
 		border-bottom 1px solid $uni-border-color
-		padding 0 10px
+		padding 10px
 	.result-box
 		display flex
-		padding 20px 10px 10px;
 		justify-content space-between
+		flex-direction column
+		border-radius 10px
+		background-color $uni-list-item-hover-color
+		margin 0 10px
 	.card-item
 		display flex
 		align-items center
+		justify-content space-between
+		padding 10px 20px
 		.label
 			margin-right 5px
+			font-size 20px
 		.value
 			font-size 20px
 			color $uni-color-success
+		&:last-child
+			border-top 1px solid $uni-list-item-color
 	.fix-bottom
 		position fixed
 		bottom 0
