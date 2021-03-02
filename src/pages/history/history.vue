@@ -2,6 +2,7 @@
     <form class='loginView'>
         <view class="history-box" v-if="historyList && historyList.length">
             <view class="chart-box">
+                <view class="chart-title">百公里油耗变化折线图</view>
                 <canvas :style="canvasStyle" canvas-id="canvasLineA" id="canvasLineA" class="charts" @touchstart="touchLineA"></canvas>
             </view>
             <view class="history-list">
@@ -135,7 +136,7 @@
                 let chartData = {
                     categories: [],
                     series: [{
-                        name: '百公里油耗变化折线图',
+                        name: '油耗',
                         data: [],
                         color: '#4cd964',
                         style: 'curve'
@@ -188,7 +189,8 @@
                     width: _self.cWidth * _self.pixelRatio,
                     height: _self.cHeight * _self.pixelRatio,
                     legend: {
-                        fontColor: '#ffffff'
+                        fontColor: '#ffffff',
+                        show: false
                     },
                     extra: {
                         line: {
@@ -242,6 +244,11 @@
 		.chart-box
 			display block
 			.charts
+				display block
+			.chart-title
+				font-size 14px
+				color #ffffff
+				text-align center
 				display block
 		display block
 		border-radius 5px;
