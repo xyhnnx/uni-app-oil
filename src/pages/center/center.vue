@@ -10,6 +10,13 @@
 			</button>
 		</view>
 		<view class="center-list">
+			<view class="center-list-item border-bottom">
+				<text class="list-icon">&#xe609;</text>
+				<view class="list-text">
+					<button class="share common-open-type-button" open-type="contact">联系我们</button>
+				</view>
+				<text class="navigat-arrow">&#xe65e;</text>
+			</view>
             <view class="center-list-item border-bottom">
                 <text class="list-icon">&#xe62d;</text>
                 <view class="list-text">
@@ -42,7 +49,7 @@
 	export default {
 		data() {
 			return {
-				avatarUrl: '/static/img/logo.png',
+				avatarUrl: '/static/logo.png',
 			}
 		},
 		computed: {

@@ -27,7 +27,7 @@
 		</view>
 		<!--  #ifdef  MP-WEIXIN -->
 		<view class="tip">
-			提示：点击记录，可将本次的油耗数据记录下来，到历史油耗中查看爱车的油耗数据。
+			提示：点击记录，可将本次的油耗数据记录下来，到历史油耗中查看爱车的油耗数据。<text @click="btnClick" class="green">{{config.btnText}}</text>
 		</view>
 		<!--  #endif -->
 		<view @click="appreciate" class="fix-bottom">
@@ -160,6 +160,12 @@
 					}
 				})
 			},
+			btnClick () {
+				// 预览图片
+				uni.previewImage({
+					urls: [this.config.imgSrc],
+				});
+			},
 			addVideoAd () {
 				// 在页面onLoad回调事件中创建激励视频广告实例
 				if (wx.createRewardedVideoAd) {
@@ -203,6 +209,8 @@
 
 <style lang="stylus" scoped>
 	@import "../../uni.styl"
+	.green
+		color $uni-color-success
 	.input-view-item
 		border-bottom 1px solid $uni-border-color
 		padding 10px
