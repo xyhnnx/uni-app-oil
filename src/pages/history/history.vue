@@ -34,6 +34,9 @@
                     </view>
                 </view>
             </view>
+            <view>
+                点击可删除记录
+            </view>
         </view>
         <view v-else class="common-no-data-box">
             <NoData :text="loading?'加载中...':'暂无数据'"></NoData>
